@@ -169,10 +169,12 @@ async function main() {
 
 main()
   .then(async () => {
+    await pool.end();
     await prisma.$disconnect();
   })
   .catch(async (error) => {
     console.error(error);
+    await pool.end();
     await prisma.$disconnect();
     process.exit(1);
   });
