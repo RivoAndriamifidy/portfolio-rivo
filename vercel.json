@@ -1,9 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "installCommand": "npm install",
-  "buildCommand": "npm run build:vercel",
-  "outputDirectory": "dist/portfolio-rivo/browser",
+  "installCommand": "cd frontend && npm install",
+  "buildCommand": "cd frontend && npm run build:vercel",
+  "outputDirectory": "frontend/dist/portfolio-rivo/browser",
   "framework": null,
   "rewrites": [
     {

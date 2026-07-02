@@ -29,7 +29,10 @@ async function bootstrap() {
     .map((origin) => origin.trim());
 
   app.enableCors({
-    origin: (origin, callback) => {
+    origin: (
+      origin: string | undefined,
+      callback: (error: Error | null, allow: boolean) => void,
+    ) => {
       if (!origin || isAllowedOrigin(origin, allowedOrigins)) {
         callback(null, true);
         return;

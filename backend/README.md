@@ -7,7 +7,7 @@ API NestJS pour le portfolio de **ANDRIAMIFIDY Manantenasoa Rivo**.
 ```
 portfolio-rivo/
 ├── backend/     ← API NestJS (ce dossier)
-└── src/         ← Frontend Angular
+└── frontend/    ← Application Angular
 ```
 
 ## Démarrage local
