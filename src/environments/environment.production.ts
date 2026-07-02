@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://portfolio-rivo-api.onrender.com/api',
+  apiUrl: 'https://api.rivoandry.site/api',
 };

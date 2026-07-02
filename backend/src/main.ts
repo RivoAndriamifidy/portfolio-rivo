@@ -5,6 +5,9 @@ import { AppModule } from './app.module';
 function isAllowedOrigin(origin: string, allowedOrigins: string[]): boolean {
   if (allowedOrigins.includes(origin)) return true;
   if (origin.endsWith('.vercel.app')) return true;
+  if (origin === 'https://rivoandry.site' || origin === 'https://www.rivoandry.site') {
+    return true;
+  }
   return false;
 }
 

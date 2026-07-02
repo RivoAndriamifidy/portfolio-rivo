@@ -1,7 +1,7 @@
 import { writeFileSync } from 'node:fs';
 
 const apiUrl =
-  process.env.API_URL ?? 'https://portfolio-rivo-api.onrender.com/api';
+  process.env.API_URL ?? 'https://api.rivoandry.site/api';
 
 const content = `export const environment = {
   production: true,

@@ -6,7 +6,7 @@ databases:
 
 services:
   - type: web
-    name: portfolio-rivo-api
+    name: rivoandry-api
     runtime: node
     plan: free
     rootDir: backend
@@ -21,7 +21,7 @@ services:
           name: portfolio-rivo-db
           property: connectionString
       - key: CORS_ORIGIN
-        value: http://localhost:4200
+        value: https://rivoandry.site,https://www.rivoandry.site,http://localhost:4200
       - key: PORT
         value: 10000
     autoDeploy: true
