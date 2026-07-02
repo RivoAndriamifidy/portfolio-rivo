@@ -2,6 +2,12 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
+function isAllowedOrigin(origin: string, allowedOrigins: string[]): boolean {
+  if (allowedOrigins.includes(origin)) return true;
+  if (origin.endsWith('.vercel.app')) return true;
+  return false;
+}
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
@@ -15,9 +21,18 @@ async function bootstrap() {
     }),
   );
 
-  const corsOrigin = process.env.CORS_ORIGIN ?? 'http://localhost:4200';
+  const allowedOrigins = (process.env.CORS_ORIGIN ?? 'http://localhost:4200')
+    .split(',')
+    .map((origin) => origin.trim());
+
   app.enableCors({
-    origin: corsOrigin.split(',').map((origin) => origin.trim()),
+    origin: (origin, callback) => {
+      if (!origin || isAllowedOrigin(origin, allowedOrigins)) {
+        callback(null, true);
+        return;
+      }
+      callback(new Error('Not allowed by CORS'), false);
+    },
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     credentials: true,
   });

@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:static": "ng build --configuration production-static",
+    "build:vercel": "node scripts/generate-env.mjs && npm run build:static",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:portfolio-rivo": "node dist/portfolio-rivo/server/server.mjs"

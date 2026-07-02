@@ -51,6 +51,9 @@ backend/dist
 # Local terminal logs
 terminals/
 
+# Vercel
+.vercel
+
 # System files
 .DS_Store
 Thumbs.db
