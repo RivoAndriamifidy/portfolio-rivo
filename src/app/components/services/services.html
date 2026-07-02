@@ -1,0 +1,18 @@
+<section id="services" class="reveal">
+  <div class="sec-label">Services</div>
+  <h2 class="sec-title">Ce que je propose</h2>
+
+  @if (loading()) {
+    <p>Chargement des services...</p>
+  } @else {
+    <div class="services-grid">
+      @for (service of services(); track service.id; let i = $index) {
+        <article [class]="'service-card tiltable ' + colorClass(i)">
+          <div class="service-icon">{{ iconFor(service) }}</div>
+          <h3 class="service-name">{{ service.title }}</h3>
+          <p class="service-desc">{{ service.description }}</p>
+        </article>
+      }
+    </div>
+  }
+</section>

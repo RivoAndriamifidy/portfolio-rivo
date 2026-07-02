@@ -1,0 +1,21 @@
+<section id="stack" class="reveal">
+  <div class="sec-label">Stack</div>
+  <h2 class="sec-title">Technologies maîtrisées</h2>
+
+  @if (loading()) {
+    <p>Chargement de la stack...</p>
+  } @else {
+    <div class="stack-grid">
+      @for (group of groups(); track group.category; let i = $index) {
+        <div [class]="'stack-group tiltable ' + groupClass(i)">
+          <div class="stack-group-name">{{ group.category }}</div>
+          <div class="stack-items">
+            @for (item of group.items; track item.id) {
+              <span class="stack-item">{{ item.name }}</span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  }
+</section>

@@ -1,0 +1,41 @@
+<section id="projects" class="reveal">
+  <div class="sec-label">Projets</div>
+  <h2 class="sec-title">Réalisations récentes</h2>
+
+  @if (loading()) {
+    <p>Chargement des projets...</p>
+  } @else {
+    <div class="projects-grid">
+      @for (project of projects(); track project.id) {
+        <article class="project-card tiltable" [class.featured]="project.featured">
+          <div class="project-top">
+            <h3 class="project-name">{{ project.title }}</h3>
+          </div>
+
+          <p class="project-desc">{{ project.description }}</p>
+
+          <div class="project-techs">
+            @for (tag of project.tags; track tag) {
+              <span class="tech">{{ tag }}</span>
+            }
+          </div>
+
+          @if (project.demoUrl || project.githubUrl) {
+            <div class="hero-ctas" style="margin-top: 1.2rem; justify-content: flex-start">
+              @if (project.demoUrl) {
+                <a class="btn-glow" [href]="project.demoUrl" target="_blank" rel="noopener">
+                  Voir la démo
+                </a>
+              }
+              @if (project.githubUrl) {
+                <a class="btn-outline" [href]="project.githubUrl" target="_blank" rel="noopener">
+                  GitHub
+                </a>
+              }
+            </div>
+          }
+        </article>
+      }
+    </div>
+  }
+</section>

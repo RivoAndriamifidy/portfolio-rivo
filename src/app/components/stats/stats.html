@@ -1,0 +1,15 @@
+<div class="stats-bar reveal" id="stats">
+  @if (loading()) {
+    <div class="stat-item">
+      <div class="stat-num">—</div>
+      <div class="stat-lbl">Chargement...</div>
+    </div>
+  } @else {
+    @for (stat of stats(); track stat.id) {
+      <div class="stat-item">
+        <div class="stat-num" [attr.data-value]="stat.value">{{ stat.value }}</div>
+        <div class="stat-lbl">{{ stat.label }}</div>
+      </div>
+    }
+  }
+</div>
