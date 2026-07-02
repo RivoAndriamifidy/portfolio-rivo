@@ -1,3 +1,4 @@
+# Sync Render Blueprint sur la branche main (commit le plus recent)
 databases:
   - name: portfolio-rivo-db
     plan: free
