@@ -39,4 +39,7 @@ npm start
 ## Déploiement
 
 - **API** : Render (`render.yaml`, dossier `backend/`)
-- **Frontend** : Vercel (dossier `frontend/`, variable `API_URL`)
+- **Frontend** : Vercel (repo racine, `vercel.json` pointe vers `frontend/`)
+  - Variable optionnelle : `API_URL=https://rivoandry-api.onrender.com/api`
+  - Domaine custom `rivoandry.site` : à configurer dans Vercel + DNS
+- **API custom** : `api.rivoandry.site` → CNAME vers Render (quand le domaine est actif)
