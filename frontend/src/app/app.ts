@@ -119,7 +119,7 @@ export class App implements AfterViewInit {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    const colors = ['rgba(255,255,255,', 'rgba(229,229,234,', 'rgba(184,184,190,'];
+    const colors = ['rgba(124,92,252,', 'rgba(255,77,141,', 'rgba(0,229,255,'];
     for (let i = 0; i < 55; i++) {
       pts.push({
         x: Math.random() * W,
@@ -154,7 +154,7 @@ export class App implements AfterViewInit {
             ctx.beginPath();
             ctx.moveTo(pts[i].x, pts[i].y);
             ctx.lineTo(pts[j].x, pts[j].y);
-            ctx.strokeStyle = `rgba(255,255,255,${0.06 * (1 - d / 120)})`;
+            ctx.strokeStyle = `rgba(124,92,252,${0.1 * (1 - d / 120)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -331,7 +331,7 @@ export class App implements AfterViewInit {
     if (!heroBadge) return;
 
     setInterval(() => {
-      heroBadge.style.boxShadow = '0 0 20px rgba(255,255,255,0.18)';
+      heroBadge.style.boxShadow = '0 0 20px rgba(124,92,252,0.45)';
       setTimeout(() => {
         heroBadge.style.boxShadow = '';
       }, 600);
