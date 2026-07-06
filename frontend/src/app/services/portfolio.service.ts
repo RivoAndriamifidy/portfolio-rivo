@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import {
   Formation,
+  Language,
   Profile,
   Project,
   Service,
@@ -38,5 +39,9 @@ export class PortfolioService {
 
   getStats(): Observable<Stat[]> {
     return this.http.get<Stat[]>(`${this.baseUrl}/portfolio/stats`);
+  }
+
+  getLanguages(): Observable<Language[]> {
+    return this.http.get<Language[]>(`${this.baseUrl}/portfolio/languages`);
   }
 }

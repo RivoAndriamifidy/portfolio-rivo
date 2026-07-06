@@ -4,8 +4,13 @@ export interface Profile {
   lastName: string;
   role: string;
   location: string;
+  email: string | null;
+  phone: string | null;
+  address: string | null;
+  bio: string | null;
   badge: string;
   tags: string[];
+  availabilityItems: string[];
   updatedAt: string;
 }
 
@@ -13,6 +18,9 @@ export interface Project {
   id: number;
   title: string;
   description: string;
+  category: string | null;
+  period: string | null;
+  highlights: string[];
   imageUrl: string | null;
   demoUrl: string | null;
   githubUrl: string | null;
@@ -25,6 +33,7 @@ export interface Service {
   id: number;
   title: string;
   description: string;
+  items: string[];
   icon: string | null;
   order: number;
 }
@@ -44,6 +53,13 @@ export interface Formation {
   institution: string;
   period: string;
   description: string | null;
+  order: number;
+}
+
+export interface Language {
+  id: number;
+  name: string;
+  level: string;
   order: number;
 }
 

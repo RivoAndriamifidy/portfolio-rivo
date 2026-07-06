@@ -39,4 +39,9 @@ export class PortfolioController {
   getStats() {
     return this.portfolioService.getStats();
   }
+
+  @Get('languages')
+  getLanguages() {
+    return this.portfolioService.getLanguages();
+  }
 }

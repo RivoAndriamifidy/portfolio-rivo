@@ -11,6 +11,13 @@
           <div class="service-icon">{{ iconFor(service) }}</div>
           <h3 class="service-name">{{ service.title }}</h3>
           <p class="service-desc">{{ service.description }}</p>
+          @if (service.items?.length) {
+            <ul class="service-items">
+              @for (item of service.items ?? []; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          }
         </article>
       }
     </div>

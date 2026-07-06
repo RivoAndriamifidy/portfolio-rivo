@@ -23,4 +23,15 @@ export class Projects implements OnInit {
       error: () => this.loading.set(false),
     });
   }
+
+  badgeClass(category: string): string {
+    const map: Record<string, string> = {
+      'Full Stack': 'badge b-full',
+      'Back-End': 'badge b-back',
+      'Front-End': 'badge b-front',
+      IA: 'badge b-ia',
+      Stage: 'badge b-stage',
+    };
+    return map[category] ?? 'badge b-full';
+  }
 }

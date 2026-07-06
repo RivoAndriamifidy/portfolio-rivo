@@ -1,0 +1,23 @@
+-- AlterTable Profile
+ALTER TABLE "Profile" ADD COLUMN IF NOT EXISTS "email" TEXT;
+ALTER TABLE "Profile" ADD COLUMN IF NOT EXISTS "phone" TEXT;
+ALTER TABLE "Profile" ADD COLUMN IF NOT EXISTS "address" TEXT;
+ALTER TABLE "Profile" ADD COLUMN IF NOT EXISTS "bio" TEXT;
+ALTER TABLE "Profile" ADD COLUMN IF NOT EXISTS "availabilityItems" TEXT[] DEFAULT ARRAY[]::TEXT[];
+
+-- AlterTable Service
+ALTER TABLE "Service" ADD COLUMN IF NOT EXISTS "items" TEXT[] DEFAULT ARRAY[]::TEXT[];
+
+-- AlterTable Project
+ALTER TABLE "Project" ADD COLUMN IF NOT EXISTS "category" TEXT;
+ALTER TABLE "Project" ADD COLUMN IF NOT EXISTS "period" TEXT;
+ALTER TABLE "Project" ADD COLUMN IF NOT EXISTS "highlights" TEXT[] DEFAULT ARRAY[]::TEXT[];
+
+-- CreateTable Language
+CREATE TABLE IF NOT EXISTS "Language" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "level" TEXT NOT NULL,
+    "order" INTEGER NOT NULL DEFAULT 0,
+    CONSTRAINT "Language_pkey" PRIMARY KEY ("id")
+);

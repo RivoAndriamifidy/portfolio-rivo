@@ -10,9 +10,25 @@
         <article class="project-card tiltable" [class.featured]="project.featured">
           <div class="project-top">
             <h3 class="project-name">{{ project.title }}</h3>
+            <div class="project-badges">
+              @if (project.category) {
+                <span [class]="badgeClass(project.category)">{{ project.category }}</span>
+              }
+              @if (project.period) {
+                <span class="project-period">{{ project.period }}</span>
+              }
+            </div>
           </div>
 
           <p class="project-desc">{{ project.description }}</p>
+
+          @if (project.highlights?.length) {
+            <ul class="project-points">
+              @for (point of project.highlights ?? []; track point) {
+                <li>{{ point }}</li>
+              }
+            </ul>
+          }
 
           <div class="project-techs">
             @for (tag of project.tags; track tag) {

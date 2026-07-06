@@ -40,4 +40,8 @@ export class PortfolioService {
   getStats() {
     return this.prisma.stat.findMany({ orderBy: { order: 'asc' } });
   }
+
+  getLanguages() {
+    return this.prisma.language.findMany({ orderBy: { order: 'asc' } });
+  }
 }

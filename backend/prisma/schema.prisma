@@ -8,20 +8,28 @@ datasource db {
 }
 
 model Profile {
-  id        Int      @id @default(1)
-  firstName String
-  lastName  String
-  role      String
-  location  String
-  badge     String
-  tags      String[]
-  updatedAt DateTime @updatedAt
+  id                Int      @id @default(1)
+  firstName         String
+  lastName          String
+  role              String
+  location          String
+  email             String?
+  phone             String?
+  address           String?
+  bio               String?
+  badge             String
+  tags              String[]
+  availabilityItems String[]
+  updatedAt         DateTime @updatedAt
 }
 
 model Project {
   id          Int      @id @default(autoincrement())
   title       String
   description String
+  category    String?
+  period      String?
+  highlights  String[]
   imageUrl    String?
   demoUrl     String?
   githubUrl   String?
@@ -31,11 +39,12 @@ model Project {
 }
 
 model Service {
-  id          Int    @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   title       String
   description String
+  items       String[]
   icon        String?
-  order       Int    @default(0)
+  order       Int      @default(0)
 }
 
 model StackItem {
@@ -54,6 +63,13 @@ model Formation {
   period      String
   description String?
   order       Int     @default(0)
+}
+
+model Language {
+  id    Int    @id @default(autoincrement())
+  name  String
+  level String
+  order Int    @default(0)
 }
 
 model Stat {

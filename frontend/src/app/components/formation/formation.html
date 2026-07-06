@@ -19,5 +19,30 @@
         </article>
       }
     </div>
+
+    <div class="formation-extra">
+      <div>
+        <h3 class="formation-subtitle">Langues</h3>
+        <div class="lang-grid">
+          @for (lang of languages(); track lang.id) {
+            <article class="lang-card">
+              <p class="lang-name">{{ lang.name }}</p>
+              <p class="lang-level">{{ lang.level }}</p>
+            </article>
+          }
+        </div>
+      </div>
+
+      @if (availabilityItems().length) {
+        <div>
+          <h3 class="formation-subtitle">Disponibilité & Modalités</h3>
+          <ul class="availability-list">
+            @for (item of availabilityItems(); track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
   }
 </section>
