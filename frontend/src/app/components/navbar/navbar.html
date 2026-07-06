@@ -32,10 +32,10 @@
         <li>
           <a
             class="nav-link"
-            routerLink="/projets"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
+            routerLink="/"
+            fragment="projects"
             (click)="closeMenu()"
+            [class.active]="isHomeSection('projects')"
           >
             Projets
           </a>
