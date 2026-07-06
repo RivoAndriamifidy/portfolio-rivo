@@ -34,7 +34,6 @@ export class App implements AfterViewInit {
     this.initHeroGrid();
     this.initParallaxBlobs();
     this.initFloatingShapes();
-    this.initNavHighlight();
     this.initBadgeShimmer();
   }
 
@@ -216,7 +215,7 @@ export class App implements AfterViewInit {
   }
 
   private initMagneticButtons() {
-    document.querySelectorAll('.btn-glow, .btn-outline, .nav-cta').forEach((btn) => {
+    document.querySelectorAll('.btn-glow, .btn-outline').forEach((btn) => {
       const el = btn as HTMLElement;
       el.addEventListener('mousemove', (e) => {
         const r = el.getBoundingClientRect();
@@ -295,29 +294,6 @@ export class App implements AfterViewInit {
       shape.style.cssText = `width:${sz}px;height:${sz}px;background:${c};top:${15 + Math.random() * 60}%;left:${5 + Math.random() * 85}%;animation-delay:${d}s;animation-duration:${dur};border-radius:${Math.random() > 0.5 ? '50%' : '20%'}`;
       heroEl.appendChild(shape);
     });
-  }
-
-  private initNavHighlight() {
-    const sections = document.querySelectorAll('section[id], div[id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
-
-    window.addEventListener(
-      'scroll',
-      () => {
-        let current = '';
-        sections.forEach((s) => {
-          if (window.scrollY >= (s as HTMLElement).offsetTop - 100) {
-            current = s.id;
-          }
-        });
-        navLinks.forEach((a) => {
-          const link = a as HTMLElement;
-          link.style.color =
-            link.getAttribute('href') === `#${current}` ? 'var(--text)' : '';
-        });
-      },
-      { passive: true },
-    );
   }
 
   private initBadgeShimmer() {

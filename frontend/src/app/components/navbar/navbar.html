@@ -1,18 +1,111 @@
-<nav>
-  <a class="nav-logo" routerLink="/">
-    <span class="nav-logo-mark">
-      <img src="/logo/logo-rivo.png" alt="Logo Rivo" width="40" height="40" />
-    </span>
-    <span class="nav-logo-text">Rivo<span>.</span>dev</span>
-  </a>
+<header
+  class="site-header"
+  [class.is-scrolled]="isScrolled()"
+  [class.menu-open]="menuOpen()"
+>
+  <div class="nav-glow" aria-hidden="true"></div>
 
-  <ul class="nav-links">
-    <li><a routerLink="/" fragment="services">Services</a></li>
-    <li><a routerLink="/projets">Projets</a></li>
-    <li><a routerLink="/" fragment="stack">Stack</a></li>
-    <li><a routerLink="/" fragment="formation">Formation</a></li>
-    <li><a routerLink="/" fragment="contact">Contact</a></li>
-  </ul>
+  <nav class="nav-bar" aria-label="Navigation principale">
+    <a class="nav-logo" routerLink="/" (click)="closeMenu()">
+      <span class="nav-logo-mark">
+        <img src="/logo/logo-rivo.png" alt="Logo Rivo" width="40" height="40" />
+      </span>
+      <span class="nav-brand">
+        <span class="nav-logo-text">Rivo<span>.</span>dev</span>
+        <span class="nav-tagline">Développeur Full Stack</span>
+      </span>
+    </a>
 
-  <a class="nav-cta" routerLink="/" fragment="contact">Me contacter</a>
-</nav>
+    <div class="nav-panel">
+      <ul class="nav-links">
+        <li>
+          <a
+            class="nav-link"
+            routerLink="/"
+            fragment="services"
+            (click)="closeMenu()"
+            [class.active]="isHomeSection('services')"
+          >
+            Services
+          </a>
+        </li>
+        <li>
+          <a
+            class="nav-link"
+            routerLink="/projets"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()"
+          >
+            Projets
+          </a>
+        </li>
+        <li>
+          <a
+            class="nav-link"
+            routerLink="/"
+            fragment="stack"
+            (click)="closeMenu()"
+            [class.active]="isHomeSection('stack')"
+          >
+            Stack
+          </a>
+        </li>
+        <li>
+          <a
+            class="nav-link"
+            routerLink="/"
+            fragment="formation"
+            (click)="closeMenu()"
+            [class.active]="isHomeSection('formation')"
+          >
+            Formation
+          </a>
+        </li>
+        <li>
+          <a
+            class="nav-link"
+            routerLink="/"
+            fragment="contact"
+            (click)="closeMenu()"
+            [class.active]="isHomeSection('contact')"
+          >
+            Contact
+          </a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <span class="nav-status">
+          <span class="nav-status-dot"></span>
+          Disponible
+        </span>
+        <a class="nav-cta" routerLink="/" fragment="contact" (click)="closeMenu()">
+          <span>Me contacter</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="nav-burger"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen()"
+      aria-label="Ouvrir le menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <button
+    type="button"
+    class="nav-backdrop"
+    (click)="closeMenu()"
+    aria-label="Fermer le menu"
+  ></button>
+</header>
