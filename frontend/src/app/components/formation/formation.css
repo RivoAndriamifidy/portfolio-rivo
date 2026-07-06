@@ -1,0 +1,23 @@
+.about-card {
+  background: var(--card);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  margin-bottom: 3rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.about-text {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.about-address {
+  margin: 1rem 0 0;
+  font-size: 12px;
+  color: var(--dim);
+  letter-spacing: 0.02em;
+}

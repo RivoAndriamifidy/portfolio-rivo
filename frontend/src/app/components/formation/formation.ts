@@ -15,6 +15,8 @@ export class Formation implements OnInit {
   formations = signal<FormationItem[]>([]);
   languages = signal<{ id: number; name: string; level: string; order: number }[]>([]);
   availabilityItems = signal<string[]>([]);
+  bio = signal<string | null>(null);
+  address = signal<string | null>(null);
   loading = signal(true);
 
   ngOnInit() {
@@ -27,6 +29,8 @@ export class Formation implements OnInit {
         this.formations.set(formations);
         this.languages.set(languages);
         this.availabilityItems.set(profile.availabilityItems ?? []);
+        this.bio.set(profile.bio);
+        this.address.set(profile.address);
         this.loading.set(false);
       },
       error: () => this.loading.set(false),

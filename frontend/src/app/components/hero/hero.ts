@@ -16,6 +16,12 @@ export class Hero implements OnInit {
   loading = signal(true);
   error = signal(false);
 
+  pitch(bio: string): string {
+    const sentences = bio.match(/[^.!?]+[.!?]+/g);
+    if (!sentences?.length) return bio;
+    return sentences.slice(0, 2).join(' ').trim();
+  }
+
   ngOnInit() {
     this.portfolioService.getProfile().subscribe({
       next: (profile) => {

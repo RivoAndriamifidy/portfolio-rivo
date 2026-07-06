@@ -3,15 +3,15 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 const profileData = {
-  firstName: 'ANDRIAMIFIDY Manantenasoa',
-  lastName: 'Rivoniaina Noelson',
-  role: 'Développeur Freelance Full Stack | Java · NestJS · Angular · Python IA',
-  location: 'II A 185 Tanjombato, Antananarivo 102',
+  firstName: 'Rivo',
+  lastName: 'ANDRIAMIFIDY Manantenasoa · Rivoniaina Noelson',
+  role: 'Développeur Freelance Full Stack',
+  location: 'Antananarivo, Madagascar',
   email: 'rivoandriamifidy0@gmail.com',
   phone: '+261 34 42 978 89',
   address: 'II A 185 Tanjombato, Antananarivo 102',
   bio: "Développeur Full Stack passionné, spécialisé en Java (Spring Boot), Node.js (NestJS), Angular et Python (IA intégrée). Diplômé d'un Master 2 en Génie Logiciel, je propose mes services en freelance pour la conception et le développement d'applications web modernes, la création d'API REST robustes, et l'intégration de solutions d'intelligence artificielle. Autonome, rigoureux et orienté résultats, je m'adapte rapidement aux besoins de mes clients pour livrer des projets de qualité.",
-  badge: 'Disponible immédiatement pour missions freelance',
+  badge: 'Disponible — Missions freelance',
   tags: ['Java Spring Boot', 'NestJS', 'Node.js', 'Angular', 'Python IA', 'TypeScript'],
   availabilityItems: [
     'Disponible immédiatement pour missions freelance',

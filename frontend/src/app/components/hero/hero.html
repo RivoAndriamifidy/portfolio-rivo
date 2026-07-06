@@ -1,6 +1,6 @@
 <div class="hero" id="hero">
   <div class="hero-inner">
-    <div class="hero-brand reveal">
+    <aside class="hero-brand reveal">
       <div class="hero-logo-ring">
         <img
           src="/logo/logo-rivo.png"
@@ -10,52 +10,61 @@
           height="220"
         />
       </div>
-      <p class="hero-brand-caption">Développeur Full Stack</p>
-    </div>
+      <p class="hero-brand-caption">Rivo.dev</p>
+    </aside>
 
     <div class="hero-content">
       @if (loading()) {
-        <p class="hero-role">Chargement du profil...</p>
+        <p class="hero-status">Chargement du profil...</p>
       } @else if (error()) {
-        <p class="hero-role">Impossible de charger le profil.</p>
+        <p class="hero-status">Impossible de charger le profil.</p>
       } @else if (profile(); as p) {
         <div class="hero-badge">{{ p.badge }}</div>
 
-        <h1>
-          <span class="name-main">{{ p.firstName }}</span>
-          <span class="name-accent">{{ p.lastName }}</span>
-        </h1>
+        <header class="hero-headline">
+          <h1><span class="name-display">{{ p.firstName }}</span></h1>
+          <p class="name-legal">{{ p.lastName }}</p>
+        </header>
 
-        <p class="hero-role">
-          <strong>{{ p.role }}</strong>
-        </p>
+        <p class="hero-role">{{ p.role }}</p>
+
+        <div class="hero-stack" aria-label="Technologies principales">
+          @for (tag of p.tags; track tag) {
+            <span class="stack-pill">{{ tag }}</span>
+          }
+        </div>
 
         @if (p.bio) {
-          <p class="hero-bio">{{ p.bio }}</p>
+          <p class="hero-pitch">{{ pitch(p.bio) }}</p>
         }
-
-        <div class="hero-contact-line">
-          @if (p.email) {
-            <a href="mailto:{{ p.email }}">{{ p.email }}</a>
-            <span class="dot">•</span>
-          }
-          @if (p.phone) {
-            <span>{{ p.phone }}</span>
-            <span class="dot">•</span>
-          }
-          <span>{{ p.location }}</span>
-        </div>
-
-        <div class="hero-tags">
-          @for (tag of p.tags; track tag) {
-            <span class="tag">{{ tag }}</span>
-          }
-        </div>
 
         <div class="hero-ctas">
           <a class="btn-glow" routerLink="/projets">Voir mes projets</a>
-          <a class="btn-outline" routerLink="/" fragment="contact">Contact</a>
+          <a class="btn-outline" routerLink="/" fragment="contact">Me contacter</a>
         </div>
+
+        <ul class="hero-meta">
+          @if (p.email) {
+            <li>
+              <a class="meta-link" [href]="'mailto:' + p.email">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M4 8l8 5 8-5"/></svg>
+                {{ p.email }}
+              </a>
+            </li>
+          }
+          @if (p.phone) {
+            <li>
+              <a class="meta-link" [href]="'tel:' + p.phone.replaceAll(' ', '')">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                {{ p.phone }}
+              </a>
+            </li>
+          }
+          <li class="meta-location">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            {{ p.location }}
+          </li>
+        </ul>
       }
     </div>
   </div>

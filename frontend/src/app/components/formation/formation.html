@@ -22,6 +22,16 @@
       }
     </div>
 
+    @if (bio()) {
+      <article class="about-card">
+        <h3 class="formation-subtitle">À propos</h3>
+        <p class="about-text">{{ bio() }}</p>
+        @if (address()) {
+          <p class="about-address">{{ address() }}</p>
+        }
+      </article>
+    }
+
     <div class="formation-extra">
       <div>
         <h3 class="formation-subtitle">Langues</h3>
