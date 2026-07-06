@@ -1,5 +1,5 @@
 <nav>
-  <a class="nav-logo" href="#hero">
+  <a class="nav-logo" routerLink="/">
     <span class="nav-logo-mark">
       <img src="/logo/logo-rivo.png" alt="Logo Rivo" width="40" height="40" />
     </span>
@@ -7,12 +7,12 @@
   </a>
 
   <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#projects">Projets</a></li>
-    <li><a href="#stack">Stack</a></li>
-    <li><a href="#formation">Formation</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a routerLink="/" fragment="services">Services</a></li>
+    <li><a routerLink="/projets">Projets</a></li>
+    <li><a routerLink="/" fragment="stack">Stack</a></li>
+    <li><a routerLink="/" fragment="formation">Formation</a></li>
+    <li><a routerLink="/" fragment="contact">Contact</a></li>
   </ul>
 
-  <a class="nav-cta" href="#contact">Me contacter</a>
+  <a class="nav-cta" routerLink="/" fragment="contact">Me contacter</a>
 </nav>

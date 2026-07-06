@@ -6,19 +6,13 @@ import {
   PLATFORM_ID,
   signal,
 } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { Navbar } from './components/navbar/navbar';
-import { Hero } from './components/hero/hero';
-import { Stats } from './components/stats/stats';
-import { Services } from './components/services/services';
-import { Projects } from './components/projects/projects';
-import { Stack } from './components/stack/stack';
-import { Formation } from './components/formation/formation';
-import { Contact } from './components/contact/contact';
 import { Footer } from './components/footer/footer';
 
 @Component({
   selector: 'app-root',
-  imports: [Navbar, Hero, Stats, Services, Projects, Stack, Formation, Contact, Footer],
+  imports: [RouterOutlet, Navbar, Footer],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

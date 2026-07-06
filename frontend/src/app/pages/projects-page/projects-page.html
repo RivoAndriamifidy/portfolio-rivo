@@ -1,0 +1,17 @@
+<main class="projects-page">
+  <div class="projects-page-header reveal">
+    <a routerLink="/" class="back-link">← Retour au portfolio</a>
+    <div class="sec-label">Portfolio</div>
+    <h1 class="sec-title">Tous les projets</h1>
+    <p class="projects-page-intro">
+      Découvrez l'ensemble de mes réalisations : applications en production, projets full stack,
+      IA et stages professionnels.
+    </p>
+  </div>
+
+  <app-projects
+    [standalone]="true"
+    sectionTitle="Catalogue complet"
+    sectionLabel="Projets"
+  ></app-projects>
+</main>

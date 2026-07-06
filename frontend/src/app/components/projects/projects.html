@@ -1,12 +1,16 @@
-<section id="projects" class="reveal">
-  <div class="sec-label">Projets</div>
-  <h2 class="sec-title">Réalisations récentes</h2>
+<section
+  [attr.id]="standalone() ? null : 'projects'"
+  class="reveal"
+  [class.projects-section]="standalone()"
+>
+  <div class="sec-label">{{ sectionLabel() }}</div>
+  <h2 class="sec-title">{{ sectionTitle() }}</h2>
 
   @if (loading()) {
     <p>Chargement des projets...</p>
   } @else {
     <div class="projects-grid">
-      @for (project of projects(); track project.id) {
+      @for (project of displayedProjects(); track project.id) {
         <article
           class="project-card tiltable"
           [class.featured]="project.featured"
@@ -86,5 +90,11 @@
         </article>
       }
     </div>
+
+    @if (showAllLink() && hasMoreProjects()) {
+      <div class="projects-footer">
+        <a routerLink="/projets" class="btn-outline">Voir tous les projets ({{ projects().length }})</a>
+      </div>
+    }
   }
 </section>

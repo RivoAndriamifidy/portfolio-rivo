@@ -1,18 +1,36 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, input, OnInit, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Project } from '../../models/portfolio.models';
 import { PortfolioService } from '../../services/portfolio.service';
 
 @Component({
   selector: 'app-projects',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './projects.html',
   styleUrl: './projects.css',
 })
 export class Projects implements OnInit {
   private readonly portfolioService = inject(PortfolioService);
 
+  limit = input<number | null>(null);
+  showAllLink = input(false);
+  standalone = input(false);
+  sectionTitle = input('Réalisations récentes');
+  sectionLabel = input('Projets');
+
   projects = signal<Project[]>([]);
   loading = signal(true);
+
+  displayedProjects = computed(() => {
+    const all = this.projects();
+    const max = this.limit();
+    return max ? all.slice(0, max) : all;
+  });
+
+  hasMoreProjects = computed(() => {
+    const max = this.limit();
+    return max != null && this.projects().length > max;
+  });
 
   ngOnInit() {
     this.portfolioService.getProjects().subscribe({

@@ -110,6 +110,17 @@
   opacity: 1;
 }
 
+.projects-section {
+  max-width: none;
+  padding: 0;
+}
+
+.projects-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
 @media (max-width: 900px) {
   .project-card.has-preview {
     grid-template-columns: 1fr;
