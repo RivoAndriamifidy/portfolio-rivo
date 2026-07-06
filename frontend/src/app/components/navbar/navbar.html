@@ -6,7 +6,7 @@
   <div class="nav-glow" aria-hidden="true"></div>
 
   <nav class="nav-bar" aria-label="Navigation principale">
-    <a class="nav-logo" routerLink="/" (click)="closeMenu()">
+    <a class="nav-logo" routerLink="/" href="/" (click)="goHome($event)">
       <span class="nav-logo-mark">
         <img src="/logo/logo-rivo.png" alt="Logo Rivo" width="40" height="40" />
       </span>
@@ -21,9 +21,8 @@
         <li>
           <a
             class="nav-link"
-            routerLink="/"
-            fragment="services"
-            (click)="closeMenu()"
+            href="/#services"
+            (click)="navigateSection('services', $event)"
             [class.active]="isHomeSection('services')"
           >
             Services
@@ -32,9 +31,8 @@
         <li>
           <a
             class="nav-link"
-            routerLink="/"
-            fragment="projects"
-            (click)="closeMenu()"
+            href="/#projects"
+            (click)="navigateSection('projects', $event)"
             [class.active]="isHomeSection('projects')"
           >
             Projets
@@ -43,9 +41,8 @@
         <li>
           <a
             class="nav-link"
-            routerLink="/"
-            fragment="stack"
-            (click)="closeMenu()"
+            href="/#stack"
+            (click)="navigateSection('stack', $event)"
             [class.active]="isHomeSection('stack')"
           >
             Stack
@@ -54,9 +51,8 @@
         <li>
           <a
             class="nav-link"
-            routerLink="/"
-            fragment="formation"
-            (click)="closeMenu()"
+            href="/#formation"
+            (click)="navigateSection('formation', $event)"
             [class.active]="isHomeSection('formation')"
           >
             Formation
@@ -65,9 +61,8 @@
         <li>
           <a
             class="nav-link"
-            routerLink="/"
-            fragment="contact"
-            (click)="closeMenu()"
+            href="/#contact"
+            (click)="navigateSection('contact', $event)"
             [class.active]="isHomeSection('contact')"
           >
             Contact
@@ -80,7 +75,11 @@
           <span class="nav-status-dot"></span>
           Disponible
         </span>
-        <a class="nav-cta" routerLink="/" fragment="contact" (click)="closeMenu()">
+        <a
+          class="nav-cta"
+          href="/#contact"
+          (click)="navigateSection('contact', $event)"
+        >
           <span>Me contacter</span>
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

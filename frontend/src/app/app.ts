@@ -6,7 +6,8 @@ import {
   PLATFORM_ID,
   signal,
 } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs';
 import { Navbar } from './components/navbar/navbar';
 import { Footer } from './components/footer/footer';
 
@@ -18,6 +19,7 @@ import { Footer } from './components/footer/footer';
 })
 export class App implements AfterViewInit {
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly router = inject(Router);
   protected readonly title = signal('portfolio-rivo');
 
   ngAfterViewInit() {
@@ -26,13 +28,21 @@ export class App implements AfterViewInit {
     this.initCursor();
     this.initScrollProgress();
     this.initParticles();
+    this.initParallaxBlobs();
+    this.bindRouteEffects();
+
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        setTimeout(() => this.bindRouteEffects(), 80);
+      });
+  }
+
+  private bindRouteEffects() {
     this.initScrollReveal();
     this.initCardTilt();
     this.initMagneticButtons();
     this.initRipple();
-    this.initHeroGrid();
-    this.initParallaxBlobs();
-    this.initFloatingShapes();
   }
 
   private initLoader() {
@@ -157,7 +167,7 @@ export class App implements AfterViewInit {
   }
 
   private initScrollReveal() {
-    const reveals = document.querySelectorAll('.reveal');
+    const reveals = document.querySelectorAll('.reveal:not([data-reveal-init])');
     const revObs = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry, i) => {
@@ -169,9 +179,13 @@ export class App implements AfterViewInit {
       },
       { threshold: 0.08 },
     );
-    reveals.forEach((el) => revObs.observe(el));
+    reveals.forEach((el) => {
+      el.setAttribute('data-reveal-init', '');
+      revObs.observe(el);
+    });
 
-    document.querySelectorAll('.sec-title').forEach((el) => {
+    document.querySelectorAll('.sec-title:not([data-title-init])').forEach((el) => {
+      el.setAttribute('data-title-init', '');
       const obs = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {
@@ -189,9 +203,12 @@ export class App implements AfterViewInit {
 
   private initCardTilt() {
     document
-      .querySelectorAll('.service-card, .project-card, .stack-group, .lang-card')
+      .querySelectorAll(
+        '.service-card:not([data-tilt-init]), .project-card:not([data-tilt-init]), .stack-group:not([data-tilt-init]), .lang-card:not([data-tilt-init])',
+      )
       .forEach((card) => {
         const el = card as HTMLElement;
+        el.setAttribute('data-tilt-init', '');
         el.addEventListener('mousemove', (e) => {
           const r = el.getBoundingClientRect();
           const x = ((e as MouseEvent).clientX - r.left) / r.width - 0.5;
@@ -213,8 +230,11 @@ export class App implements AfterViewInit {
   }
 
   private initMagneticButtons() {
-    document.querySelectorAll('.btn-glow, .btn-outline').forEach((btn) => {
+    document
+      .querySelectorAll('.btn-glow:not([data-magnetic-init]), .btn-outline:not([data-magnetic-init])')
+      .forEach((btn) => {
       const el = btn as HTMLElement;
+      el.setAttribute('data-magnetic-init', '');
       el.addEventListener('mousemove', (e) => {
         const r = el.getBoundingClientRect();
         const x = ((e as MouseEvent).clientX - r.left - r.width / 2) * 0.25;
@@ -228,8 +248,13 @@ export class App implements AfterViewInit {
   }
 
   private initRipple() {
-    document.querySelectorAll('.contact-link, .btn-glow, .btn-outline').forEach((el) => {
+    document
+      .querySelectorAll(
+        '.contact-link:not([data-ripple-init]), .btn-glow:not([data-ripple-init]), .btn-outline:not([data-ripple-init])',
+      )
+      .forEach((el) => {
       const host = el as HTMLElement;
+      host.setAttribute('data-ripple-init', '');
       host.classList.add('ripple-host');
       host.addEventListener('click', (e) => {
         const r = host.getBoundingClientRect();
@@ -239,14 +264,6 @@ export class App implements AfterViewInit {
         setTimeout(() => circle.remove(), 600);
       });
     });
-  }
-
-  private initHeroGrid() {
-    const heroEl = document.querySelector('.hero');
-    if (!heroEl) return;
-    const grid = document.createElement('div');
-    grid.className = 'hero-grid';
-    heroEl.insertBefore(grid, heroEl.firstChild);
   }
 
   private initParallaxBlobs() {
@@ -266,24 +283,6 @@ export class App implements AfterViewInit {
       },
       { passive: true },
     );
-  }
-
-  private initFloatingShapes() {
-    const heroEl = document.querySelector('.hero');
-    if (!heroEl) return;
-
-    (
-      [
-        [120, 'var(--accent1)', 0, '3s'],
-        [80, 'var(--accent2)', 2, '5s'],
-        [60, 'var(--accent3)', 4, '4s'],
-      ] as const
-    ).forEach(([sz, c, d, dur]) => {
-      const shape = document.createElement('div');
-      shape.className = 'float-shape';
-      shape.style.cssText = `width:${sz}px;height:${sz}px;background:${c};top:${15 + Math.random() * 60}%;left:${5 + Math.random() * 85}%;animation-delay:${d}s;animation-duration:${dur};border-radius:${Math.random() > 0.5 ? '50%' : '20%'}`;
-      heroEl.appendChild(shape);
-    });
   }
 
 }

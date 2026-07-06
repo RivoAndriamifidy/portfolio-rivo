@@ -7,12 +7,12 @@ import {
   PLATFORM_ID,
   signal,
 } from '@angular/core';
-import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
@@ -56,7 +56,46 @@ export class Navbar implements OnInit, OnDestroy {
   }
 
   isHomeSection(section: string): boolean {
-    return this.router.url === '/' && this.activeSection() === section;
+    return this.isOnHome() && this.activeSection() === section;
+  }
+
+  goHome(event: MouseEvent) {
+    if (!this.isOnHome()) {
+      this.closeMenu();
+      return;
+    }
+
+    event.preventDefault();
+    this.closeMenu();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    history.replaceState(null, '', '/');
+    this.activeSection.set('');
+  }
+
+  navigateSection(section: string, event: MouseEvent) {
+    event.preventDefault();
+    this.closeMenu();
+
+    if (this.isOnHome()) {
+      this.scrollToSection(section);
+      return;
+    }
+
+    void this.router.navigate(['/'], { fragment: section });
+  }
+
+  private scrollToSection(section: string) {
+    document.getElementById(section)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+    history.replaceState(null, '', `#${section}`);
+    this.activeSection.set(section);
+  }
+
+  private isOnHome(): boolean {
+    const path = this.router.url.split('?')[0].split('#')[0];
+    return path === '/' || path === '';
   }
 
   private readonly onScroll = () => {
@@ -65,7 +104,7 @@ export class Navbar implements OnInit, OnDestroy {
   };
 
   private updateActiveSection() {
-    if (this.router.url !== '/') {
+    if (!this.isOnHome()) {
       this.activeSection.set('');
       return;
     }
