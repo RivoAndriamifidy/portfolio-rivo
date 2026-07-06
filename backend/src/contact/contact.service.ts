@@ -1,13 +1,23 @@
-import { Injectable } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  Logger,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { MailService } from '../mail/mail.service';
 import { CreateContactDto } from './dto/create-contact.dto';
 
 @Injectable()
 export class ContactService {
-  constructor(private readonly prisma: PrismaService) {}
+  private readonly logger = new Logger(ContactService.name);
 
-  create(dto: CreateContactDto) {
-    return this.prisma.contactMessage.create({
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly mailService: MailService,
+  ) {}
+
+  async create(dto: CreateContactDto) {
+    const saved = await this.prisma.contactMessage.create({
       data: {
         name: dto.name,
         email: dto.email,
@@ -22,5 +32,19 @@ export class ContactService {
         createdAt: true,
       },
     });
+
+    try {
+      await this.mailService.sendContactNotification(dto);
+    } catch (error) {
+      this.logger.error('Échec envoi email de contact', error);
+
+      if (process.env.NODE_ENV === 'production' && this.mailService.isConfigured()) {
+        throw new InternalServerErrorException(
+          "Le message a été enregistré mais l'email n'a pas pu être envoyé. Réessayez plus tard.",
+        );
+      }
+    }
+
+    return saved;
   }
 }

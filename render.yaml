@@ -24,7 +24,21 @@ services:
           name: portfolio-rivo-db
           property: connectionString
       - key: CORS_ORIGIN
-        value: https://rivoandry.site,https://www.rivoandry.site,http://localhost:4200
+        value: https://rivoandry.site,https://www.rivoandry.site,https://portfolio-rivo.vercel.app,http://localhost:4200
       - key: PORT
         value: "10000"
+      - key: CONTACT_TO_EMAIL
+        value: rivoandriamifidy0@gmail.com
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_SECURE
+        value: "false"
+      - key: SMTP_USER
+        value: rivoandriamifidy0@gmail.com
+      - key: SMTP_FROM
+        value: Portfolio Rivo <rivoandriamifidy0@gmail.com>
+      - key: SMTP_PASS
+        sync: false
     autoDeploy: true
