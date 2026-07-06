@@ -1,0 +1,35 @@
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+}
+
+.footer-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+  position: relative;
+}
+
+.footer-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 1px;
+  background: var(--grad);
+  transition: width 0.25s ease;
+}
+
+.footer-nav a:hover {
+  color: var(--text);
+}
+
+.footer-nav a:hover::after {
+  width: 100%;
+}

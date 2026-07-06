@@ -1,10 +1,11 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Profile } from '../../models/portfolio.models';
 import { PortfolioService } from '../../services/portfolio.service';
 
 @Component({
   selector: 'app-hero',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './hero.html',
   styleUrl: './hero.css',
 })

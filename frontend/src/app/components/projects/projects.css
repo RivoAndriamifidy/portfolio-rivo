@@ -32,12 +32,18 @@
   height: 100%;
   min-height: 280px;
   background: var(--bg2);
-  border: 1px solid var(--border2);
-  border-radius: 18px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+  box-shadow: var(--shadow-md);
   display: flex;
   flex-direction: column;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.project-card.has-preview:hover .preview-browser {
+  border-color: var(--border2);
+  box-shadow: 0 20px 56px rgba(0, 0, 0, 0.34), var(--shadow-glow);
 }
 
 .preview-toolbar {
@@ -118,7 +124,12 @@
 .projects-footer {
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
+  padding-top: 0.5rem;
+}
+
+.projects-grid {
+  gap: 1.5rem;
 }
 
 @media (max-width: 900px) {

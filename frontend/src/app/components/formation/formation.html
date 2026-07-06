@@ -1,6 +1,8 @@
 <section id="formation" class="reveal">
-  <div class="sec-label">Formation</div>
-  <h2 class="sec-title">Parcours académique</h2>
+  <div class="section-head">
+    <div class="sec-label">Formation</div>
+    <h2 class="sec-title">Parcours académique</h2>
+  </div>
 
   @if (loading()) {
     <p>Chargement des formations...</p>
@@ -13,7 +15,7 @@
             <h3 class="formation-degree">{{ formation.title }}</h3>
             <p class="formation-school">{{ formation.institution }}</p>
             @if (formation.description) {
-              <p class="project-desc" style="margin-top: 0.5rem">{{ formation.description }}</p>
+              <p class="formation-desc">{{ formation.description }}</p>
             }
           </div>
         </article>

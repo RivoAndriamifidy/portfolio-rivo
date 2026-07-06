@@ -30,11 +30,9 @@ export class App implements AfterViewInit {
     this.initCardTilt();
     this.initMagneticButtons();
     this.initRipple();
-    this.initGlitch();
     this.initHeroGrid();
     this.initParallaxBlobs();
     this.initFloatingShapes();
-    this.initBadgeShimmer();
   }
 
   private initLoader() {
@@ -113,7 +111,7 @@ export class App implements AfterViewInit {
     window.addEventListener('resize', resizeCanvas);
 
     const colors = ['rgba(124,92,252,', 'rgba(255,77,141,', 'rgba(0,229,255,'];
-    for (let i = 0; i < 55; i++) {
+    for (let i = 0; i < 32; i++) {
       pts.push({
         x: Math.random() * W,
         y: Math.random() * H,
@@ -143,11 +141,11 @@ export class App implements AfterViewInit {
           const dx = pts[i].x - pts[j].x;
           const dy = pts[i].y - pts[j].y;
           const d = Math.sqrt(dx * dx + dy * dy);
-          if (d < 120) {
+          if (d < 100) {
             ctx.beginPath();
             ctx.moveTo(pts[i].x, pts[i].y);
             ctx.lineTo(pts[j].x, pts[j].y);
-            ctx.strokeStyle = `rgba(124,92,252,${0.1 * (1 - d / 120)})`;
+            ctx.strokeStyle = `rgba(124,92,252,${0.06 * (1 - d / 100)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -243,14 +241,6 @@ export class App implements AfterViewInit {
     });
   }
 
-  private initGlitch() {
-    const h1 = document.querySelector('.hero h1 .name-main');
-    if (h1) {
-      h1.classList.add('glitch-wrap');
-      h1.setAttribute('data-text', h1.textContent ?? '');
-    }
-  }
-
   private initHeroGrid() {
     const heroEl = document.querySelector('.hero');
     if (!heroEl) return;
@@ -296,15 +286,4 @@ export class App implements AfterViewInit {
     });
   }
 
-  private initBadgeShimmer() {
-    const heroBadge = document.querySelector('.hero-badge') as HTMLElement | null;
-    if (!heroBadge) return;
-
-    setInterval(() => {
-      heroBadge.style.boxShadow = '0 0 20px rgba(124,92,252,0.45)';
-      setTimeout(() => {
-        heroBadge.style.boxShadow = '';
-      }, 600);
-    }, 3000);
-  }
 }
