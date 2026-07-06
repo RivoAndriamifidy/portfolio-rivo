@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 const profileData = {
   firstName: 'Rivo',
-  lastName: 'ANDRIAMIFIDY Manantenasoa · Rivoniaina Noelson',
+  lastName: 'ANDRIAMIFIDY Rivoniaina',
   role: 'Développeur Freelance Full Stack',
   location: 'Antananarivo, Madagascar',
   email: 'rivoandriamifidy0@gmail.com',
