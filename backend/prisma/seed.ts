@@ -53,6 +53,60 @@ async function main() {
         tags: ['Java', 'Spring Boot', 'Angular', 'Python', 'TensorFlow', 'MySQL'],
         featured: true,
         order: 1,
+        demoUrl: null,
+        githubUrl: null,
+      },
+      {
+        title: 'Saha Immo – Plateforme Immobilière',
+        description:
+          "Site vitrine et catalogue de biens immobiliers à Madagascar : vente, location, filtres par type de bien et formulaire de contact.",
+        category: 'Full Stack',
+        period: 'En production',
+        highlights: [
+          'Catalogue de biens avec fiches détaillées (vente & location)',
+          'Filtres par type : maisons, appartements, villas, bureaux',
+          'Sections services, témoignages clients et formulaire de contact',
+          'Interface moderne et responsive déployée en production',
+        ],
+        tags: ['Angular', 'TypeScript', 'TailwindCSS', 'Responsive', 'PostgreSQL'],
+        featured: true,
+        order: 2,
+        demoUrl: 'https://saha-immo.arovainvest.com/',
+        githubUrl: null,
+      },
+      {
+        title: 'ORA Call Center – Site Institutionnel',
+        description:
+          "Site web professionnel pour ORA Call Center, centre d'appel basé à Antananarivo, Madagascar.",
+        category: 'Front-End',
+        period: 'En production',
+        highlights: [
+          "Présentation des services du centre d'appel",
+          'Design professionnel orienté conversion',
+          'Déploiement en production sur domaine dédié',
+        ],
+        tags: ['Angular', 'TypeScript', 'Responsive', 'SEO'],
+        featured: true,
+        order: 3,
+        demoUrl: 'https://oracall.arovainvest.com/',
+        githubUrl: null,
+      },
+      {
+        title: 'PCMI Plans – Application Web',
+        description:
+          'Application web dédiée à la gestion et consultation de plans, déployée en production sur app-pcmi-plans.fr.',
+        category: 'Full Stack',
+        period: 'En production',
+        highlights: [
+          'Application web métier accessible en ligne',
+          'Interface utilisateur pour la consultation de plans',
+          'Déploiement et mise en production sur domaine .fr',
+        ],
+        tags: ['Angular', 'TypeScript', 'Spring Boot', 'REST API'],
+        featured: true,
+        order: 4,
+        demoUrl: 'https://app-pcmi-plans.fr/',
+        githubUrl: null,
       },
       {
         title: 'Stage VALUEIT',
@@ -67,7 +121,9 @@ async function main() {
         ],
         tags: ['Java', 'Spring Boot', 'Angular', 'IA', 'Full Stack'],
         featured: true,
-        order: 2,
+        order: 5,
+        demoUrl: null,
+        githubUrl: null,
       },
       {
         title: 'Application Web – Gestion de Stock',
@@ -81,7 +137,9 @@ async function main() {
         ],
         tags: ['Java', 'Spring Boot', 'MySQL', 'REST API'],
         featured: false,
-        order: 3,
+        order: 6,
+        demoUrl: null,
+        githubUrl: null,
       },
       {
         title: "Application CRUD – Gestion d'Étudiants",
@@ -95,7 +153,9 @@ async function main() {
         ],
         tags: ['Java', 'Spring Boot', 'Angular', 'Angular Material', 'MySQL'],
         featured: false,
-        order: 4,
+        order: 7,
+        demoUrl: null,
+        githubUrl: null,
       },
       {
         title: 'Tableau de Bord – Suivi & Extraction de Données',
@@ -109,7 +169,9 @@ async function main() {
         ],
         tags: ['Java', 'MVC', 'Talend', 'MySQL'],
         featured: false,
-        order: 5,
+        order: 8,
+        demoUrl: null,
+        githubUrl: null,
       },
       {
         title: 'Application IA – Détection de Masque & Traduction',
@@ -123,7 +185,9 @@ async function main() {
         ],
         tags: ['Python', 'TensorFlow', 'Angular', 'IA'],
         featured: true,
-        order: 6,
+        order: 9,
+        demoUrl: null,
+        githubUrl: null,
       },
     ],
   });
@@ -232,7 +296,7 @@ async function main() {
 
   await prisma.stat.createMany({
     data: [
-      { label: 'Projets réalisés', value: '6+', order: 1 },
+      { label: 'Projets réalisés', value: '9+', order: 1 },
       { label: 'Technologies', value: '19+', order: 2 },
       { label: 'Années de formation', value: '6+', order: 3 },
       { label: 'Disponibilité', value: 'Immédiate', order: 4 },
