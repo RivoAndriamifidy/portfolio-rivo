@@ -46,7 +46,7 @@ async function main() {
         highlights: [
           'Back-end : Spring Boot (gestion employés, pointages, rapports RH)',
           'Front-end : Angular + TailwindCSS — interface réactive et moderne',
-          'IA : Python, reconnaissance faciale pour l'authentification sécurisée',
+          "IA : Python, reconnaissance faciale pour l'authentification sécurisée",
           'Base de données : MySQL avec requêtes avancées',
           'API REST complète pour la communication front-back',
         ],
