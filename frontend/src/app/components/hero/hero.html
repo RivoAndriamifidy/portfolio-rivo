@@ -1,34 +1,49 @@
 <div class="hero" id="hero">
   <div class="hero-inner">
-    @if (loading()) {
-      <p class="hero-role">Chargement du profil...</p>
-    } @else if (error()) {
-      <p class="hero-role">Impossible de charger le profil.</p>
-    } @else if (profile(); as p) {
-      <div class="hero-badge">{{ p.badge }}</div>
-
-      <h1>
-        <span class="name-main">{{ p.firstName }}</span>
-        <span class="name-accent">{{ p.lastName }}</span>
-      </h1>
-
-      <p class="hero-role">
-        <strong>{{ p.role }}</strong>
-      </p>
-
-      <p class="hero-location">📍 {{ p.location }}</p>
-
-      <div class="hero-tags">
-        @for (tag of p.tags; track tag) {
-          <span class="tag">{{ tag }}</span>
-        }
+    <div class="hero-brand reveal">
+      <div class="hero-logo-ring">
+        <img
+          src="/logo/logo-rivo.jpg"
+          alt="Monogramme RA — Rivo"
+          class="hero-logo"
+          width="220"
+          height="220"
+        />
       </div>
+      <p class="hero-brand-caption">Développeur Full Stack</p>
+    </div>
 
-      <div class="hero-ctas">
-        <a class="btn-glow" href="#projects">Voir mes projets</a>
-        <a class="btn-outline" href="#contact">Contact</a>
-      </div>
-    }
+    <div class="hero-content">
+      @if (loading()) {
+        <p class="hero-role">Chargement du profil...</p>
+      } @else if (error()) {
+        <p class="hero-role">Impossible de charger le profil.</p>
+      } @else if (profile(); as p) {
+        <div class="hero-badge">{{ p.badge }}</div>
+
+        <h1>
+          <span class="name-main">{{ p.firstName }}</span>
+          <span class="name-accent">{{ p.lastName }}</span>
+        </h1>
+
+        <p class="hero-role">
+          <strong>{{ p.role }}</strong>
+        </p>
+
+        <p class="hero-location">{{ p.location }}</p>
+
+        <div class="hero-tags">
+          @for (tag of p.tags; track tag) {
+            <span class="tag">{{ tag }}</span>
+          }
+        </div>
+
+        <div class="hero-ctas">
+          <a class="btn-glow" href="#projects">Voir mes projets</a>
+          <a class="btn-outline" href="#contact">Contact</a>
+        </div>
+      }
+    </div>
   </div>
 
   <div class="scroll-hint">

@@ -59,11 +59,11 @@
 }
 
 .form-feedback.success {
-  color: #7af572;
+  color: var(--accent1);
 }
 
 .form-feedback.error {
-  color: #fc5c9c;
+  color: var(--accent2);
 }
 
 @media (max-width: 700px) {
