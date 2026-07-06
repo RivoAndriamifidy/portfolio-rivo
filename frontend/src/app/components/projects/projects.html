@@ -7,47 +7,80 @@
   } @else {
     <div class="projects-grid">
       @for (project of projects(); track project.id) {
-        <article class="project-card tiltable" [class.featured]="project.featured">
-          <div class="project-top">
-            <h3 class="project-name">{{ project.title }}</h3>
-            <div class="project-badges">
-              @if (project.category) {
-                <span [class]="badgeClass(project.category)">{{ project.category }}</span>
-              }
-              @if (project.period) {
-                <span class="project-period">{{ project.period }}</span>
+        <article
+          class="project-card tiltable"
+          [class.featured]="project.featured"
+          [class.has-preview]="hasPreview(project)"
+        >
+          <div class="project-body">
+            <div class="project-top">
+              <h3 class="project-name">{{ project.title }}</h3>
+              <div class="project-badges">
+                @if (project.category) {
+                  <span [class]="badgeClass(project.category)">{{ project.category }}</span>
+                }
+                @if (project.period) {
+                  <span class="project-period">{{ project.period }}</span>
+                }
+              </div>
+            </div>
+
+            <p class="project-desc">{{ project.description }}</p>
+
+            @if (project.highlights?.length) {
+              <ul class="project-points">
+                @for (point of project.highlights ?? []; track point) {
+                  <li>{{ point }}</li>
+                }
+              </ul>
+            }
+
+            <div class="project-techs">
+              @for (tag of project.tags; track tag) {
+                <span class="tech">{{ tag }}</span>
               }
             </div>
-          </div>
 
-          <p class="project-desc">{{ project.description }}</p>
-
-          @if (project.highlights?.length) {
-            <ul class="project-points">
-              @for (point of project.highlights ?? []; track point) {
-                <li>{{ point }}</li>
-              }
-            </ul>
-          }
-
-          <div class="project-techs">
-            @for (tag of project.tags; track tag) {
-              <span class="tech">{{ tag }}</span>
+            @if (project.demoUrl || project.githubUrl) {
+              <div class="hero-ctas project-actions">
+                @if (project.demoUrl) {
+                  <a class="btn-glow" [href]="project.demoUrl" target="_blank" rel="noopener">
+                    Voir le site
+                  </a>
+                }
+                @if (project.githubUrl) {
+                  <a class="btn-outline" [href]="project.githubUrl" target="_blank" rel="noopener">
+                    GitHub
+                  </a>
+                }
+              </div>
             }
           </div>
 
-          @if (project.demoUrl || project.githubUrl) {
-            <div class="hero-ctas" style="margin-top: 1.2rem; justify-content: flex-start">
-              @if (project.demoUrl) {
-                <a class="btn-glow" [href]="project.demoUrl" target="_blank" rel="noopener">
-                  Voir le site
+          @if (hasPreview(project)) {
+            <div class="project-preview">
+              <div class="preview-browser">
+                <div class="preview-toolbar">
+                  <span class="preview-dot"></span>
+                  <span class="preview-dot"></span>
+                  <span class="preview-dot"></span>
+                  <span class="preview-url">{{ previewHost(project) }}</span>
+                </div>
+                <a
+                  class="preview-screen"
+                  [href]="project.demoUrl!"
+                  target="_blank"
+                  rel="noopener"
+                  [attr.aria-label]="'Ouvrir ' + project.title"
+                >
+                  <img
+                    [src]="previewSrc(project)"
+                    [alt]="'Aperçu de ' + project.title"
+                    loading="lazy"
+                  />
+                  <span class="preview-overlay">Ouvrir le site →</span>
                 </a>
-              }
-              @if (project.githubUrl) {
-                <a class="btn-outline" [href]="project.githubUrl" target="_blank" rel="noopener">
-                  GitHub
-                </a>
-              }
+              </div>
             </div>
           }
         </article>

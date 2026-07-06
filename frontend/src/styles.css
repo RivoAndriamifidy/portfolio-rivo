@@ -521,10 +521,11 @@
     border-color: rgba(124,92,252,0.45);
     background: linear-gradient(135deg, rgba(124,92,252,0.1) 0%, var(--card) 60%);
   }
-  .project-card.featured::after {
+  .project-card.featured.has-preview::after,
+  .project-card.featured:not(.has-preview)::after {
     content: '★ Projet Phare';
     position: absolute;
-    top: 1.5rem; right: 1.5rem;
+    top: 1.5rem;
     background: var(--grad);
     color: white;
     font-size: 11px;
@@ -533,6 +534,8 @@
     border-radius: 100px;
     letter-spacing: 0.04em;
   }
+  .project-card.featured:not(.has-preview)::after { right: 1.5rem; }
+  .project-card.featured.has-preview::after { left: 1.25rem; right: auto; }
   .project-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 1rem; flex-wrap: wrap; }
   .project-name {
     font-family: var(--font-display);

@@ -24,6 +24,27 @@ export class Projects implements OnInit {
     });
   }
 
+  hasPreview(project: Project): boolean {
+    return Boolean(project.imageUrl || project.demoUrl);
+  }
+
+  previewSrc(project: Project): string {
+    if (project.imageUrl) return project.imageUrl;
+    if (project.demoUrl) {
+      return `https://image.thum.io/get/width/1200/crop/675/noanimate/${project.demoUrl}`;
+    }
+    return '';
+  }
+
+  previewHost(project: Project): string {
+    if (!project.demoUrl) return 'portfolio-rivo.dev';
+    try {
+      return new URL(project.demoUrl).hostname;
+    } catch {
+      return project.demoUrl;
+    }
+  }
+
   badgeClass(category: string): string {
     const map: Record<string, string> = {
       'Full Stack': 'badge b-full',
