@@ -5,11 +5,14 @@ const prisma = new PrismaClient();
 async function main() {
   await prisma.profile.upsert({
     where: { id: 1 },
-    update: {},
+    update: {
+      firstName: 'ANDRIAMIFIDY',
+      lastName: 'Rivoniaina',
+    },
     create: {
       id: 1,
       firstName: 'ANDRIAMIFIDY',
-      lastName: 'Manantenasoa Rivo',
+      lastName: 'Rivoniaina',
       role: 'Développeur Full Stack Freelance — Java · Angular · Python IA',
       location: 'Antananarivo, Madagascar',
       badge: 'Disponible pour missions freelance',
