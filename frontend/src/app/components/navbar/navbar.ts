@@ -44,15 +44,18 @@ export class Navbar implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (!isPlatformBrowser(this.platformId)) return;
     window.removeEventListener('scroll', this.onScroll);
+    document.body.style.overflow = '';
     this.routerSub?.unsubscribe();
   }
 
   toggleMenu() {
     this.menuOpen.update((open) => !open);
+    this.syncBodyScroll();
   }
 
   closeMenu() {
     this.menuOpen.set(false);
+    this.syncBodyScroll();
   }
 
   isHomeSection(section: string): boolean {
@@ -72,25 +75,47 @@ export class Navbar implements OnInit, OnDestroy {
     this.activeSection.set('');
   }
 
-  navigateSection(section: string, event: MouseEvent) {
+  navigateSection(section: string, event: Event) {
     event.preventDefault();
+    event.stopPropagation();
+    const wasOpen = this.menuOpen();
     this.closeMenu();
 
-    if (this.isOnHome()) {
-      this.scrollToSection(section);
+    const navigate = () => {
+      if (this.isOnHome()) {
+        this.scrollToSection(section);
+        return;
+      }
+
+      void this.router.navigate(['/'], { fragment: section });
+    };
+
+    if (wasOpen && this.isMobileViewport()) {
+      window.setTimeout(navigate, 120);
       return;
     }
 
-    void this.router.navigate(['/'], { fragment: section });
+    navigate();
   }
 
   private scrollToSection(section: string) {
-    document.getElementById(section)?.scrollIntoView({
+    const target = document.getElementById(section);
+    if (!target) return;
+
+    target.scrollIntoView({
       behavior: 'smooth',
       block: 'start',
     });
     history.replaceState(null, '', `#${section}`);
     this.activeSection.set(section);
+  }
+
+  private isMobileViewport(): boolean {
+    return window.matchMedia('(max-width: 900px)').matches;
+  }
+
+  private syncBodyScroll() {
+    document.body.style.overflow = this.menuOpen() ? 'hidden' : '';
   }
 
   private isOnHome(): boolean {

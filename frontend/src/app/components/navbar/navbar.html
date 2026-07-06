@@ -5,6 +5,15 @@
 >
   <div class="nav-glow" aria-hidden="true"></div>
 
+  <button
+    type="button"
+    class="nav-backdrop"
+    (click)="closeMenu()"
+    aria-label="Fermer le menu"
+    [attr.aria-hidden]="!menuOpen()"
+    tabindex="-1"
+  ></button>
+
   <nav class="nav-bar" aria-label="Navigation principale">
     <a class="nav-logo" routerLink="/" href="/" (click)="goHome($event)">
       <span class="nav-logo-mark">
@@ -91,20 +100,13 @@
     <button
       type="button"
       class="nav-burger"
-      (click)="toggleMenu()"
+      (click)="toggleMenu(); $event.stopPropagation()"
       [attr.aria-expanded]="menuOpen()"
-      aria-label="Ouvrir le menu"
+      [attr.aria-label]="menuOpen() ? 'Fermer le menu' : 'Ouvrir le menu'"
     >
       <span></span>
       <span></span>
       <span></span>
     </button>
   </nav>
-
-  <button
-    type="button"
-    class="nav-backdrop"
-    (click)="closeMenu()"
-    aria-label="Fermer le menu"
-  ></button>
 </header>
