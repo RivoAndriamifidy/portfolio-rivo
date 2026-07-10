@@ -47,8 +47,8 @@
 .contact-form input:focus,
 .contact-form textarea:focus {
   outline: none;
-  border-color: rgba(124, 92, 252, 0.45);
-  box-shadow: 0 0 0 3px rgba(124, 92, 252, 0.1);
+  border-color: rgba(59, 130, 246, 0.45);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
 }
 
 .contact-form button {
@@ -68,11 +68,11 @@
 }
 
 .form-feedback.success {
-  color: #7af572;
+  color: var(--success);
 }
 
 .form-feedback.error {
-  color: #ff4d8d;
+  color: var(--danger);
 }
 
 .contact-links {

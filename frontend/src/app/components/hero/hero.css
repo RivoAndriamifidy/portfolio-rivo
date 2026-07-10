@@ -36,11 +36,11 @@
   place-items: center;
   padding: 1.25rem;
   background:
-    radial-gradient(circle at center, rgba(8, 8, 13, 0.94) 62%, transparent 63%),
-    conic-gradient(from 200deg, #7c5cfc, #ff4d8d, #00e5ff, #ffb020, #7c5cfc);
+    radial-gradient(circle at center, rgba(10, 12, 16, 0.94) 62%, transparent 63%),
+    conic-gradient(from 200deg, #1d4ed8, #3b82f6, #38bdf8, #60a5fa, #1d4ed8);
   box-shadow:
-    0 0 40px rgba(124, 92, 252, 0.28),
-    0 0 70px rgba(255, 77, 141, 0.12),
+    0 0 40px rgba(59, 130, 246, 0.24),
+    0 0 70px rgba(37, 99, 235, 0.1),
     var(--shadow-md);
   animation: logoFloat 8s ease-in-out infinite;
 }
@@ -80,10 +80,10 @@
   align-items: center;
   align-self: flex-start;
   gap: 8px;
-  background: rgba(124, 92, 252, 0.1);
-  border: 1px solid rgba(124, 92, 252, 0.28);
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.28);
   backdrop-filter: blur(12px);
-  color: #c4b0ff;
+  color: #93c5fd;
   font-size: 10px;
   font-weight: 500;
   padding: 6px 14px;
@@ -98,9 +98,9 @@
   content: '';
   width: 6px;
   height: 6px;
-  background: #7af572;
+  background: var(--success);
   border-radius: 50%;
-  box-shadow: 0 0 10px #7af572;
+  box-shadow: 0 0 10px rgba(52, 211, 153, 0.55);
   animation: pulse 2s ease infinite;
   flex-shrink: 0;
 }
@@ -169,7 +169,7 @@
 }
 
 .stack-pill:hover {
-  border-color: rgba(124, 92, 252, 0.35);
+  border-color: rgba(59, 130, 246, 0.4);
   color: var(--text);
 }
 

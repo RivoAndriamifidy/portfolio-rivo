@@ -120,7 +120,7 @@ export class App implements AfterViewInit {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    const colors = ['rgba(124,92,252,', 'rgba(255,77,141,', 'rgba(0,229,255,'];
+    const colors = ['rgba(59,130,246,', 'rgba(96,165,250,', 'rgba(56,189,248,'];
     for (let i = 0; i < 32; i++) {
       pts.push({
         x: Math.random() * W,
@@ -155,7 +155,7 @@ export class App implements AfterViewInit {
             ctx.beginPath();
             ctx.moveTo(pts[i].x, pts[i].y);
             ctx.lineTo(pts[j].x, pts[j].y);
-            ctx.strokeStyle = `rgba(124,92,252,${0.06 * (1 - d / 100)})`;
+            ctx.strokeStyle = `rgba(59,130,246,${0.06 * (1 - d / 100)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
