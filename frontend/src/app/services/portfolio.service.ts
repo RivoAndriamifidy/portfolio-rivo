@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import {
+  Experience,
   Formation,
   Language,
   Profile,
@@ -31,6 +32,10 @@ export class PortfolioService {
 
   getStack(): Observable<StackItem[]> {
     return this.http.get<StackItem[]>(`${this.baseUrl}/portfolio/stack`);
+  }
+
+  getExperiences(): Observable<Experience[]> {
+    return this.http.get<Experience[]>(`${this.baseUrl}/portfolio/experiences`);
   }
 
   getFormations(): Observable<Formation[]> {

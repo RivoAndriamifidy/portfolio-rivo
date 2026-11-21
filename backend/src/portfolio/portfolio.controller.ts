@@ -30,6 +30,11 @@ export class PortfolioController {
     return this.portfolioService.getStack();
   }
 
+  @Get('experiences')
+  getExperiences() {
+    return this.portfolioService.getExperiences();
+  }
+
   @Get('formations')
   getFormations() {
     return this.portfolioService.getFormations();

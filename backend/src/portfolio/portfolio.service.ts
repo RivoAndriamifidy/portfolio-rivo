@@ -33,6 +33,10 @@ export class PortfolioService {
     return this.prisma.stackItem.findMany({ orderBy: { order: 'asc' } });
   }
 
+  getExperiences() {
+    return this.prisma.experience.findMany({ orderBy: { order: 'asc' } });
+  }
+
   getFormations() {
     return this.prisma.formation.findMany({ orderBy: { order: 'asc' } });
   }

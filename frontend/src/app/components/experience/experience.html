@@ -1,0 +1,31 @@
+<section id="experience" class="reveal">
+  <div class="section-head">
+    <div class="sec-label">Expérience</div>
+    <h2 class="sec-title">Parcours professionnel</h2>
+  </div>
+
+  @if (loading()) {
+    <p>Chargement des expériences...</p>
+  } @else {
+    <div class="formation-list">
+      @for (exp of experiences(); track exp.id) {
+        <article class="formation-item">
+          <div class="formation-date">{{ exp.period }}</div>
+          <div class="formation-content">
+            <h3 class="formation-degree">{{ exp.title }}</h3>
+            <p class="formation-school">
+              {{ exp.company }}@if (exp.location) { — {{ exp.location }}}
+            </p>
+            @if (exp.highlights.length) {
+              <ul class="availability-list exp-points">
+                @for (point of exp.highlights; track point) {
+                  <li>{{ point }}</li>
+                }
+              </ul>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  }
+</section>

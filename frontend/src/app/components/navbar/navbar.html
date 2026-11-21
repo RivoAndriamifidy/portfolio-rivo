@@ -40,6 +40,16 @@
         <li>
           <a
             class="nav-link"
+            href="/#experience"
+            (click)="navigateSection('experience', $event)"
+            [class.active]="isHomeSection('experience')"
+          >
+            Expérience
+          </a>
+        </li>
+        <li>
+          <a
+            class="nav-link"
             href="/#projects"
             (click)="navigateSection('projects', $event)"
             [class.active]="isHomeSection('projects')"

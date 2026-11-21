@@ -69,6 +69,8 @@ export class Projects implements OnInit {
       'Back-End': 'badge b-back',
       'Front-End': 'badge b-front',
       IA: 'badge b-ia',
+      SaaS: 'badge b-done',
+      WordPress: 'badge b-stage',
       Stage: 'badge b-stage',
     };
     return map[category] ?? 'badge b-full';

@@ -47,6 +47,16 @@ export interface StackItem {
   order: number;
 }
 
+export interface Experience {
+  id: number;
+  title: string;
+  company: string;
+  location: string | null;
+  period: string;
+  highlights: string[];
+  order: number;
+}
+
 export interface Formation {
   id: number;
   title: string;
